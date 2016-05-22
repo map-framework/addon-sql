@@ -1,6 +1,7 @@
 <?php
 namespace peer\sql;
 
+use data\peer\sql\Query;
 use util\Bucket;
 
 /**
@@ -28,6 +29,11 @@ interface SQLServerDAO {
 	 * Execute query and return Result-Bucket.
 	 */
 	public function query(Query $query):Bucket;
+
+	/**
+	 * Returns the id of the previous insert statement.
+	 */
+	public function getInsertId():int;
 
 	/**
 	 * Begin Transaction.

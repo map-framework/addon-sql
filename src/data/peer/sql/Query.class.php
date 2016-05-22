@@ -1,5 +1,7 @@
 <?php
-namespace peer\sql;
+namespace data\peer\sql;
+
+use data\AbstractData;
 
 /**
  * This file is part of the MAP-Framework.
@@ -8,7 +10,9 @@ namespace peer\sql;
  * @copyright Copyright 2016 Michael Piontkowski
  * @license   https://raw.githubusercontent.com/map-framework/map/master/LICENSE.txt Apache License 2.0
  */
-class Query {
+class Query extends AbstractData {
+
+	const PATTERN_TYPE = '^([iI]|[dD]|[sS]|[bB])$';
 
 	const TYPE_INT    = 'i';
 	const TYPE_DOUBLE = 'd';
@@ -30,8 +34,13 @@ class Query {
 	 */
 	protected $paramTypeList;
 
-	public function __construct(string $query) {
+	public function set(string $query):Query {
 		$this->query = $query;
+		return $this;
+	}
+
+	public function get():string {
+		return $this->query;
 	}
 
 	/**
